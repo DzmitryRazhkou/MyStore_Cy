@@ -1,0 +1,15 @@
+{
+  "name": "mystore_cypress",
+  "version": "1.0.0",
+  "description": "This is E2E MyStore Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dzmitry Gans",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "cypress": "^10.7.0"
+  }
+}
