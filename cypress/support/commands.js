@@ -17,8 +17,13 @@ Cypress.Commands.add("launch", () => {
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
+Cypress.Commands.add("createNewAccount", (firstName, lastName, password) => {
+  // getGender().check();
+  getFirstName().type(firstName);
+  getLastName().type(lastName);
+  getPassword().type(password);
+});
+
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

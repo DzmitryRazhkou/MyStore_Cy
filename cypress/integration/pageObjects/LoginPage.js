@@ -122,6 +122,17 @@ class LoginPage {
   getSubmitCreateAccountButton() {
     return cy.get("#submitAccount > span");
   }
+
+  getHomeButton() {
+    return cy.get(".icon-home");
+  }
+}
+
+function createNewAccount(firstName, lastName, password) {
+  getGender().check().should("be.checked");
+  getFirstName().type(firstName);
+  getLastName().type(lastName);
+  getPassword().type(password);
 }
 
 export default LoginPage;

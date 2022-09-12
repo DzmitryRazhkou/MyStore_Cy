@@ -103,27 +103,70 @@ describe("My Store", () => {
   });
 
   // Login Page
-  it("Login With Invalid Credentials Test", () => {
+  it("Create a New Account Test", () => {
     const myStorePage = new MyStorePage();
     const loginPage = new LoginPage();
 
     let email = faker.internet.email();
+    let firstName = faker.name.firstName();
+    let lastName = faker.name.lastName();
+    let password = faker.internet.password();
+
+    function randomIntFromInterval(min, max) {
+      return Math.floor(Math.random() * (max - min) + 1);
+    }
+
+    function randomMonth() {
+      var month = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "Jule",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+    }
+
+    let days = randomIntFromInterval(1, 31);
+    let months = faker.date.month();
+    let years = randomIntFromInterval(1900, 2022);
+    let company = faker.company.name();
+    let addressFirstLine = faker.address.streetAddress();
+    let addressSecondLine = faker.address.secondaryAddress();
+    let city = faker.address.city();
+    let state = faker.address.state();
+    let zipCode = faker.address.zipCode("#####");
+    let addInfo = faker.random.words();
+    let phone = faker.phone.phoneNumber("(###)###-####");
 
     myStorePage.getLoginButton().click();
     loginPage.getTitlePage().should("equal", "Login - My Store");
     loginPage.getCreateEmail().type(email);
     loginPage.getSumblitCreate().click();
+    loginPage.getGender().check();
 
-    // loginPage.getAuthentication().should("have.text", "\tAuthentication");
-    // loginPage.getEmailField().type(email);
-    // loginPage.getPassword().type(password);
-    // loginPage.getSubmitButton().click();
-    // loginPage.getAuthenticationFailed().then((ele) => {
-    //   const alertMessage = ele.text();
-    //   expect(alertMessage.includes("Authentication failed.")).to.be.true;
-    //   cy.log(" =====> Alert Message: " + alertMessage + " <===== ");
-    // });
-
-    // loginPage.getHomeButton().click();
+    loginPage.getFirstName().type(firstName);
+    loginPage.getLastName().type(lastName);
+    loginPage.getPassword().type(password);
+    loginPage.getDays().select(days);
+    loginPage.getMonth().select(months);
+    loginPage.getYears().select(years);
+    loginPage.getCompany().type(company);
+    loginPage.getAddreessFirstLine().type(addressFirstLine);
+    loginPage.getAddreessSecondLine().type(addressSecondLine);
+    loginPage.getCity().type(city);
+    loginPage.getState().select(state);
+    loginPage.getZip().type(zipCode);
+    loginPage.getAdditionalInfo().type(addInfo);
+    loginPage.getHomePhone().type(phone);
+    loginPage.getMobilePhone().type(phone);
+    loginPage.getSubmitCreateAccountButton().click();
+    loginPage.getHomeButton().click();
   });
 });
