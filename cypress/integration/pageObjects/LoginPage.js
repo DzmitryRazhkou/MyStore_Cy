@@ -3,10 +3,16 @@ class LoginPage {
     return cy.title();
   }
 
+  // Get Title Page:
+  validateTitlePage(titlePage) {
+    this.getTitlePage().should("equal", titlePage);
+  }
+
   getAuthentication() {
     return cy.get(".navigation_page");
   }
 
+  // Login:
   getEmailField() {
     return cy.get("#email");
   }
@@ -19,6 +25,13 @@ class LoginPage {
     return cy.get("#SubmitLogin > span");
   }
 
+  // Login Fuction:
+  login(email, password) {
+    this.getEmailField().type(email);
+    this.getPassword().type(password);
+    this.getSubmitButton().click();
+  }
+
   getHomeButton() {
     return cy.get(".home");
   }
@@ -27,18 +40,39 @@ class LoginPage {
     return cy.get("div[class='alert alert-danger'] ol li");
   }
 
+  // Get Validation From Authentication:
+  getValidateAuthentication(text) {
+    this.getAuthentication().should("have.text", text);
+  }
+
   getSignOut() {
     return cy.get("a[class='logout']");
   }
 
+  // clickOnSignOut:
+  clickSignOut() {
+    this.getSignOut().click();
+  }
+  // Pre-Steps
   getCreateEmail() {
     return cy.get("#email_create");
+  }
+
+  // Type a New Email For Creating A New Account:
+  typeNewEmailForCreateNewAccount(newEmail) {
+    this.getCreateEmail().type(newEmail);
   }
 
   getSumblitCreate() {
     return cy.get("#SubmitCreate > span");
   }
 
+  // Submit New Email Created:
+  submitNewAccount() {
+    this.getSumblitCreate().click();
+  }
+
+  // Create New Account
   getGender() {
     return cy.get("#id_gender2");
   }
@@ -65,14 +99,6 @@ class LoginPage {
 
   getYears() {
     return cy.get("#years");
-  }
-
-  getNewsletters() {
-    return cy.get("#newsletter");
-  }
-
-  getOffer() {
-    return cy.get("#optin");
   }
 
   getFirstNameAddress() {
@@ -126,13 +152,51 @@ class LoginPage {
   getHomeButton() {
     return cy.get(".icon-home");
   }
-}
 
-function createNewAccount(firstName, lastName, password) {
-  getGender().check().should("be.checked");
-  getFirstName().type(firstName);
-  getLastName().type(lastName);
-  getPassword().type(password);
+  // Click On The Home Button:
+  clickOnHomeButton() {
+    this.getHomeButton().click();
+  }
+
+  getMyAccountButton() {
+    return cy.get(".navigation_page");
+  }
+
+  // Create A New Account:
+  createNewAccount(
+    firstName,
+    lastName,
+    password,
+    days,
+    months,
+    years,
+    company,
+    addressFirstLine,
+    addressSecondLine,
+    city,
+    state,
+    zipCode,
+    addInfo,
+    phone
+  ) {
+    this.getGender().check();
+    this.getFirstName().type(firstName);
+    this.getLastName().type(lastName);
+    this.getPassword().type(password);
+    this.getDays().select(days);
+    this.getMonth().select(months);
+    this.getYears().select(years);
+    this.getCompany().type(company);
+    this.getAddreessFirstLine().type(addressFirstLine);
+    this.getAddreessSecondLine().type(addressSecondLine);
+    this.getCity().type(city);
+    this.getState().select(state);
+    this.getZip().type(zipCode);
+    this.getAdditionalInfo().type(addInfo);
+    this.getHomePhone().type(phone);
+    this.getMobilePhone().type(phone);
+    this.getSubmitCreateAccountButton().click();
+  }
 }
 
 export default LoginPage;

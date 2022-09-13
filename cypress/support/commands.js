@@ -17,12 +17,42 @@ Cypress.Commands.add("launch", () => {
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add("createNewAccount", (firstName, lastName, password) => {
-  // getGender().check();
-  getFirstName().type(firstName);
-  getLastName().type(lastName);
-  getPassword().type(password);
-});
+Cypress.Commands.add(
+  "createNewAccount",
+  (
+    firstName,
+    lastName,
+    password,
+    days,
+    months,
+    years,
+    company,
+    addressFirstLine,
+    addressSecondLine,
+    city,
+    state,
+    zipCode,
+    addInfo,
+    phone
+  ) => {
+    getFirstName().type(firstName);
+    getLastName().type(lastName);
+    getPassword().type(password);
+    getDays().select(days);
+    getMonth().select(months);
+    getYears().select(years);
+    getCompany().type(company);
+    getAddreessFirstLine().type(addressFirstLine);
+    getAddreessSecondLine().type(addressSecondLine);
+    getCity().type(city);
+    getState().select(state);
+    getZip().type(zipCode);
+    getAdditionalInfo().type(addInfo);
+    getHomePhone().type(phone);
+    getMobilePhone().type(phone);
+    getSubmitCreateAccountButton().click();
+  }
+);
 
 //
 // -- This is a child command --
