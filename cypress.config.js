@@ -5,6 +5,7 @@ module.exports = defineConfig({
   defaultCommandTimeout: 20000,
   pageLoadTimeout: 30000,
   reporter: "mochawesome",
+  failOnStatusCode: false,
 
   env: {
     url: "http://automationpractice.com/index.php",

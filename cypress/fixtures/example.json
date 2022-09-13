@@ -1,5 +1,23 @@
 {
-  "name": "Using fixtures to represent data",
-  "email": "hello@cypress.io",
-  "body": "Fixtures are a great way to mock data for responses to routes"
+  "myStore": {
+    "myStorePageTitle": "My Store",
+    "footer": "Call Us",
+    "body": "Fixtures are a great way to mock data for responses to routes"
+  },
+  "contactUs": {
+    "contactPageTitle": "Contact us - My Store",
+    "contactEleText": "Contact",
+    "subject": "Customer service",
+    "indexSubject": 2
+  },
+  "login": {
+    "loginPageTitle": "Login - My Store",
+    "authenticationText": "\tAuthentication",
+    "email": "dimagadjilla@gmail.com",
+    "password": "3036057Dr",
+    "wrongEmail": "dimagadjilla@gmail.com_",
+    "wrongPassword": "3036057Dr_",
+    "unsuccessAuthentication": "Invalid email address.",
+    "myAccount": "My account"
+  }
 }

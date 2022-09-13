@@ -5,42 +5,48 @@ import { faker } from "@faker-js/faker";
 
 // MyStore Page
 describe("My Store", () => {
+  let myStoreJson;
+
   before(() => {
+    cy.fixture("example").then((data) => {
+      myStoreJson = data;
+      return myStoreJson;
+    });
+
     cy.launch();
   });
 
-  it("MyStorePage Test", () => {
+  it.skip("MyStorePage Test", () => {
     const myStorePage = new MyStorePage();
 
-    // incluse - equal - eql
     myStorePage.urlValidate();
-    myStorePage.validateTitlePage("My Store");
+    myStorePage.validateTitlePage(myStoreJson.myStore.myStorePageTitle);
     myStorePage.popularProducts();
     myStorePage.bestSellers();
     myStorePage.footerContactInfo();
 
     myStorePage.getFooterContactInfo().each((ele) => {
       const text = ele.find("div h3").text();
-      if (text.includes("Call Us")) {
+      if (text.includes(myStoreJson.footer)) {
         cy.log(" =====> " + text + " <===== ");
       }
     });
   });
 
   // ContactUs Page
-  it("ContactUsPage Test", () => {
+  it.skip("ContactUsPage Test", () => {
     const myStorePage = new MyStorePage();
     const contactUsPage = new ContactUsPage();
 
-    let subject = "Customer service";
+    let subject = myStoreJson.contactUs.subject;
     let email = faker.internet.email();
     let orderReference = faker.random.words();
     let message = faker.random.words();
 
     myStorePage.clickOnContactUsButton();
-    contactUsPage.validateTitlePage("Contact us - My Store");
-    contactUsPage.contactTextValidation("Contact");
-    contactUsPage.subjectHeading(subject, 2);
+    contactUsPage.validateTitlePage(myStoreJson.contactUs.contactPageTitle);
+    contactUsPage.contactTextValidation(myStoreJson.contactUs.contactEleText);
+    contactUsPage.subjectHeading(subject, myStoreJson.contactUs.indexSubject);
     contactUsPage.typeEmail(email);
     contactUsPage.orderReference(orderReference);
     contactUsPage.enterMessage(message);
@@ -61,36 +67,37 @@ describe("My Store", () => {
   });
 
   // Login Page
-  it("Login With Valid Credentials Test", () => {
+  it.skip("Login With Valid Credentials Test", () => {
     const myStorePage = new MyStorePage();
     const loginPage = new LoginPage();
 
-    let email = "dimagadjilla@gmail.com";
-    let password = "3036057Dr";
+    let email = myStoreJson.login.email;
+    let password = myStoreJson.login.password;
 
     myStorePage.clickOnSignInButton();
-    loginPage.validateTitlePage("Login - My Store");
-    loginPage.getValidateAuthentication("\tAuthentication");
+    loginPage.validateTitlePage(myStoreJson.login.loginPageTitle);
+    loginPage.getValidateAuthentication(myStoreJson.login.authenticationText);
     loginPage.login(email, password);
     loginPage.clickOnHomeButton();
     loginPage.clickSignOut();
   });
 
   // Login Page
-  it("Login With Invalid Credentials Test", () => {
+  it.skip("Login With Invalid Credentials Test", () => {
     const myStorePage = new MyStorePage();
     const loginPage = new LoginPage();
 
-    let email = "dimagadjilla_@gmail.com";
-    let password = "3036057Dr_";
+    let email = myStoreJson.login.wrongEmail;
+    let password = myStoreJson.login.wrongPassword;
 
     myStorePage.clickOnSignInButton();
-    loginPage.validateTitlePage("Login - My Store");
-    loginPage.getValidateAuthentication("\tAuthentication");
+    loginPage.validateTitlePage(myStoreJson.login.loginPageTitle);
+    loginPage.getValidateAuthentication(myStoreJson.login.authenticationText);
     loginPage.login(email, password);
     loginPage.getAuthenticationFailed().then((ele) => {
       const alertMessage = ele.text();
-      expect(alertMessage.includes("Authentication failed.")).to.be.true;
+      expect(alertMessage.includes(myStoreJson.login.unsuccessAuthentication))
+        .to.be.true;
       cy.log(" =====> Alert Message: " + alertMessage + " <===== ");
     });
 
@@ -124,7 +131,7 @@ describe("My Store", () => {
     let phone = faker.phone.phoneNumber("(###)###-####");
 
     myStorePage.clickOnSignInButton();
-    loginPage.validateTitlePage("Login - My Store");
+    loginPage.validateTitlePage(myStoreJson.login.loginPageTitle);
     loginPage.typeNewEmailForCreateNewAccount(email);
     loginPage.submitNewAccount();
 
@@ -146,7 +153,7 @@ describe("My Store", () => {
     );
     loginPage.getMyAccountButton().then((ele) => {
       const txt = ele.text();
-      expect(txt.includes("My account")).to.be.true;
+      expect(txt.includes(myStoreJson.login.myAccount)).to.be.true;
       cy.log(" =====> Element Text: " + txt + " <===== ");
     });
     loginPage.clickOnHomeButton();
