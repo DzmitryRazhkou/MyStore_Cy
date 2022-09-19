@@ -19,6 +19,6 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
 
-    specPattern: "cypress/integration/*.js",
+    specPattern: "cypress/integration/MyStoreTests/*.js",
   },
 });

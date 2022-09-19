@@ -1,15 +1,22 @@
 {
   "myStore": {
+    "urlInclude": "automation",
     "myStorePageTitle": "My Store",
-    "footer": "Call Us",
-    "body": "Fixtures are a great way to mock data for responses to routes"
+    "popularProduct": 7,
+    "bestSellers": 7,
+    "product": "Faded Short Sleeve T-shirt",
+    "footerContactInfo": 3,
+    "footer": "Call Us"
   },
+
   "contactUs": {
     "contactPageTitle": "Contact us - My Store",
     "contactEleText": "Contact",
     "subject": "Customer service",
-    "indexSubject": 2
+    "indexSubject": 2,
+    "successAlert": "Your message has been successfully sent to our team."
   },
+
   "login": {
     "loginPageTitle": "Login - My Store",
     "authenticationText": "\tAuthentication",
@@ -19,5 +26,10 @@
     "wrongPassword": "3036057Dr_",
     "unsuccessAuthentication": "Invalid email address.",
     "myAccount": "My account"
+  },
+
+  "search": {
+    "product": "T-shirt",
+    "message": "Your order on My Store is complete."
   }
 }

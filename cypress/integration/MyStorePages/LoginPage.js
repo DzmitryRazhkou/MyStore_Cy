@@ -1,58 +1,66 @@
 class LoginPage {
-  getTitlePage() {
-    return cy.title();
-  }
-
   // Get Title Page:
   validateTitlePage(titlePage) {
-    this.getTitlePage().should("equal", titlePage);
-  }
-
-  getAuthentication() {
-    return cy.get(".navigation_page");
-  }
-
-  // Login:
-  getEmailField() {
-    return cy.get("#email");
-  }
-
-  getPassword() {
-    return cy.get("#passwd");
-  }
-
-  getSubmitButton() {
-    return cy.get("#SubmitLogin > span");
-  }
-
-  // Login Fuction:
-  login(email, password) {
-    this.getEmailField().type(email);
-    this.getPassword().type(password);
-    this.getSubmitButton().click();
-  }
-
-  getHomeButton() {
-    return cy.get(".home");
-  }
-
-  getAuthenticationFailed() {
-    return cy.get("div[class='alert alert-danger'] ol li");
+    cy.title().should("equal", titlePage);
+    return this;
   }
 
   // Get Validation From Authentication:
-  getValidateAuthentication(text) {
-    this.getAuthentication().should("have.text", text);
+  getValidateAuthentication(txt) {
+    cy.get(".navigation_page").should("have.text", txt);
   }
 
-  getSignOut() {
-    return cy.get("a[class='logout']");
+  // Login Fuction:
+  loginCorrectCredentials() {
+    cy.fixture("example").then((data) => {
+      cy.get("#email").type(data.login.email);
+      cy.get("#passwd").type(data.login.password);
+      cy.get("#SubmitLogin > span").click();
+    });
+    return this;
   }
 
-  // clickOnSignOut:
+  // Login with Incorrect Credentials:
+  loginIncorrectCredentials() {
+    cy.fixture("example").then((data) => {
+      cy.get("#email").type(data.login.wrongEmail);
+      cy.get("#passwd").type(data.login.wrongPassword);
+      cy.get("#SubmitLogin > span").click();
+    });
+    return this;
+  }
+
+  // Click On The Home Button:
+  clickOnHomeButton() {
+    cy.fixture("example").then((data) => {
+      cy.get(".home").click();
+      cy.title().should("equal", data.myStore.myStorePageTitle);
+    });
+    return this;
+  }
+
+  // Get Validation From My Account:
+  getMyAccountButton(txt) {
+    cy.get(".navigation_page").should("have.text", txt);
+    return this;
+  }
+
+  // Get Validation Text From Alert
+  authenticationFailed(message) {
+    cy.get("div[class='alert alert-danger'] ol li").then((ele) => {
+      const alertMessage = ele.text();
+      expect(alertMessage.includes(message)).to.be.true;
+      cy.log(" =====> Alert Message: " + alertMessage + " <===== ");
+    });
+  }
+
+  // Click Sign Out:
   clickSignOut() {
-    this.getSignOut().click();
+    cy.get("a[class='logout']").click();
   }
+
+  // Create A New Account
+
   // Pre-Steps
   getCreateEmail() {
     return cy.get("#email_create");
@@ -147,19 +155,6 @@ class LoginPage {
 
   getSubmitCreateAccountButton() {
     return cy.get("#submitAccount > span");
-  }
-
-  getHomeButton() {
-    return cy.get(".icon-home");
-  }
-
-  // Click On The Home Button:
-  clickOnHomeButton() {
-    this.getHomeButton().click();
-  }
-
-  getMyAccountButton() {
-    return cy.get(".navigation_page");
   }
 
   // Create A New Account:

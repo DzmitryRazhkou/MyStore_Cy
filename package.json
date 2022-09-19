@@ -10,6 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
-    "cypress": "^10.7.0"
+    "cypress": "^10.7.0",
+    "cypress-iframe": "^1.0.1",
+    "mochawesome": "^7.1.3"
   }
 }
