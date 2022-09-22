@@ -1,4 +1,6 @@
-class ContactUsPage {
+import BasePage from "./BasePage";
+
+class ContactUsPage extends BasePage {
   // Get Title Page:
   validateTitlePage(titlePage) {
     cy.title().should("equal", titlePage);

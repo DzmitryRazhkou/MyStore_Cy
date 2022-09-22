@@ -14,6 +14,10 @@ Cypress.Commands.add("launch", () => {
   cy.visit(Cypress.env("url"));
 });
 
+Cypress.Commands.add("tearDown", () => {
+  cy.get(".logout").click();
+});
+
 //
 //
 // -- This is a parent command --

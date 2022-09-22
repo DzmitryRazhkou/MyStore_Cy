@@ -1,4 +1,5 @@
 import ContactUsPage from "./ContactUsPage";
+import EveningDresses from "./EveningDresses";
 import LoginPage from "./LoginPage";
 import SearchPage from "./SearchPage";
 
@@ -39,6 +40,13 @@ class MyStorePage {
   clickSearch() {
     cy.get("#searchbox > .btn").click();
     return this;
+  }
+
+  // ClickOnWomenPage:
+  clickOnEveningDressesPage() {
+    cy.get(".sf-menu > :nth-child(2) > .sf-with-ul").click();
+    cy.get(".tree > :nth-child(2) > a").click();
+    return new EveningDresses();
   }
 
   // Get Price:
@@ -198,6 +206,11 @@ class MyStorePage {
       );
     });
     return this;
+  }
+
+  // Click Sign Out:
+  clickSignOut() {
+    cy.get("a[class='logout']").click();
   }
 }
 

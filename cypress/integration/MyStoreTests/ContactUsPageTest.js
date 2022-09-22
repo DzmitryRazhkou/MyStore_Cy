@@ -1,10 +1,10 @@
 import MyStorePage from "../MyStorePages/MyStorePage";
 import ContactUsPage from "../MyStorePages/ContactUsPage";
+import BasePage from "../MyStorePages/BasePage";
 import { faker } from "@faker-js/faker";
 
 describe("ContactUs Page Test", () => {
   let myStoreData;
-
   before(() => {
     cy.launch();
     cy.fixture("example").then((data) => {
@@ -13,7 +13,7 @@ describe("ContactUs Page Test", () => {
     });
   });
 
-  it("ContactUs Feature Validation", () => {
+  it.only("ContactUs Feature Validation", () => {
     let myStorePage = new MyStorePage();
     let contactUsPage = new ContactUsPage();
 

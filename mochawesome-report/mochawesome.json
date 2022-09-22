@@ -1,15 +1,15 @@
 {
   "stats": {
-    "suites": 1,
+    "suites": 0,
     "tests": 1,
-    "passes": 1,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2022-09-15T17:04:19.135Z",
-    "end": "2022-09-15T17:04:32.545Z",
-    "duration": 13410,
+    "failures": 1,
+    "start": "2022-09-21T17:33:19.084Z",
+    "end": "2022-09-21T17:33:19.382Z",
+    "duration": 298,
     "testsRegistered": 1,
-    "passPercent": 100,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,61 +18,46 @@
   },
   "results": [
     {
-      "uuid": "5372b277-dafd-4bd1-98b6-776690b7adcb",
+      "uuid": "41a657de-1792-4735-9002-db08cae82eb8",
       "title": "",
-      "fullFile": "cypress/integration/MyStoreTests/MyStorePageTest.js",
-      "file": "cypress/integration/MyStoreTests/MyStorePageTest.js",
+      "fullFile": "cypress/integration/MyStoreTests/ContactUsPageTest.js",
+      "file": "cypress/integration/MyStoreTests/ContactUsPageTest.js",
       "beforeHooks": [],
       "afterHooks": [],
-      "tests": [],
-      "suites": [
+      "tests": [
         {
-          "uuid": "272dd52c-7ab3-4413-b522-5087e9c4cdd6",
-          "title": "MyStore Page Test",
-          "fullFile": "",
-          "file": "",
-          "beforeHooks": [],
-          "afterHooks": [],
-          "tests": [
-            {
-              "title": "My Store Page Validation",
-              "fullTitle": "MyStore Page Test My Store Page Validation",
-              "timedOut": null,
-              "duration": 9861,
-              "state": "passed",
-              "speed": "medium",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "const myStorePage = new _MyStorePage.default();\nmyStorePage.urlValidate();\nmyStorePage.validateTitlePage();\nmyStorePage.popularProducts();\nmyStorePage.productNames();\nmyStorePage.validateName();\nmyStorePage.bestSellers();\nmyStorePage.footerContactInfo();",
-              "err": {},
-              "uuid": "c8dd6809-d8d0-41ee-bd1d-73d5a9f65cf0",
-              "parentUUID": "272dd52c-7ab3-4413-b522-5087e9c4cdd6",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "c8dd6809-d8d0-41ee-bd1d-73d5a9f65cf0"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 9861,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 2000
+          "title": "An uncaught error was detected outside of a test",
+          "fullTitle": "An uncaught error was detected outside of a test",
+          "timedOut": null,
+          "duration": 194,
+          "state": "failed",
+          "speed": null,
+          "pass": false,
+          "fail": true,
+          "pending": false,
+          "context": null,
+          "code": "throw err;",
+          "err": {
+            "message": "CypressError: The following error originated from your test code, not from Cypress.\n\n  > Cannot call `cy.fixture()` outside a running test.\n\nThis usually happens when you accidentally write commands outside an `it(...)` test.\n\nIf that is the case, just move these commands inside an `it(...)` test.\n\nCheck your test file for errors.\n\nWhen Cypress detects uncaught errors originating from your test code it will automatically fail the current test.\n\nCypress could not associate this error to any specific test.\n\nWe dynamically generated a new test to display this failure.\n\nhttps://on.cypress.io/cannot-execute-commands-outside-test",
+            "estack": "CypressError: The following error originated from your test code, not from Cypress.\n\n  > Cannot call `cy.fixture()` outside a running test.\n\nThis usually happens when you accidentally write commands outside an `it(...)` test.\n\nIf that is the case, just move these commands inside an `it(...)` test.\n\nCheck your test file for errors.\n\nWhen Cypress detects uncaught errors originating from your test code it will automatically fail the current test.\n\nCypress could not associate this error to any specific test.\n\nWe dynamically generated a new test to display this failure.\n\nhttps://on.cypress.io/cannot-execute-commands-outside-test\n    at $Cy.ensureRunnable (http://localhost:61608/__cypress/runner/cypress_runner.js:147255:76)\n    at cy.<computed> [as fixture] (http://localhost:61608/__cypress/runner/cypress_runner.js:157182:10)\n    at Object.create (http://localhost:61608/__cypress/runner/cypress_runner.js:103376:19)\n    at context.describe.context.context (http://localhost:61608/__cypress/runner/cypress_runner.js:103152:27)\n    at http://localhost:61608/__cypress/runner/cypress_runner.js:162108:21\n    at http://localhost:61608/__cypress/runner/cypress_runner.js:165167:16\n    at arrayEach (http://localhost:61608/__cypress/runner/cypress_runner.js:28105:11)\n    at Function.forEach (http://localhost:61608/__cypress/runner/cypress_runner.js:36985:14)\n    at evalScripts (http://localhost:61608/__cypress/runner/cypress_runner.js:165166:49)\n    at http://localhost:61608/__cypress/runner/cypress_runner.js:165174:152\n    at tryCatcher (http://localhost:61608/__cypress/runner/cypress_runner.js:11318:23)\n    at Promise._settlePromiseFromHandler (http://localhost:61608/__cypress/runner/cypress_runner.js:9253:31)\n    at Promise._settlePromise (http://localhost:61608/__cypress/runner/cypress_runner.js:9310:18)\n    at Promise._settlePromise0 (http://localhost:61608/__cypress/runner/cypress_runner.js:9355:10)\n    at Promise._settlePromises (http://localhost:61608/__cypress/runner/cypress_runner.js:9435:18)\n    at Promise._fulfill (http://localhost:61608/__cypress/runner/cypress_runner.js:9379:18)\n    at PromiseArray._resolve (http://localhost:61608/__cypress/runner/cypress_runner.js:9652:19)\n    at MappingPromiseArray._promiseFulfilled (http://localhost:61608/__cypress/runner/cypress_runner.js:8478:18)\n    at Promise._settlePromise (http://localhost:61608/__cypress/runner/cypress_runner.js:9315:26)\n    at Promise._settlePromise0 (http://localhost:61608/__cypress/runner/cypress_runner.js:9355:10)\n    at Promise._settlePromises (http://localhost:61608/__cypress/runner/cypress_runner.js:9435:18)\n    at _drainQueueStep (http://localhost:61608/__cypress/runner/cypress_runner.js:6025:12)",
+            "diff": null
+          },
+          "uuid": "55988439-e377-4691-be1d-22f9dc0f1a8a",
+          "parentUUID": "41a657de-1792-4735-9002-db08cae82eb8",
+          "isHook": false,
+          "skipped": false
         }
       ],
+      "suites": [],
       "passes": [],
-      "failures": [],
+      "failures": [
+        "55988439-e377-4691-be1d-22f9dc0f1a8a"
+      ],
       "pending": [],
       "skipped": [],
-      "duration": 0,
+      "duration": 194,
       "root": true,
-      "rootEmpty": true,
+      "rootEmpty": false,
       "_timeout": 2000
     }
   ],
