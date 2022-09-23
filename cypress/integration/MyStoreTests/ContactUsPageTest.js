@@ -13,7 +13,7 @@ describe("ContactUs Page Test", () => {
     });
   });
 
-  it.only("ContactUs Feature Validation", () => {
+  it("ContactUs Feature Validation", () => {
     let myStorePage = new MyStorePage();
     let contactUsPage = new ContactUsPage();
 

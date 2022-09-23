@@ -30,7 +30,7 @@ describe("Login Page Test", () => {
     loginPage.clickSignOut();
   });
 
-  it.skip("Login With Incorrect Credentials", () => {
+  it("Login With Incorrect Credentials", () => {
     let myStorePage = new MyStorePage();
     let loginPage = new LoginPage();
 
@@ -46,7 +46,7 @@ describe("Login Page Test", () => {
     loginPage.clickOnHomeButton();
   });
 
-  it.skip("Create a New Account", () => {
+  it("Create a New Account", () => {
     let myStorePage = new MyStorePage();
     let loginPage = new LoginPage();
 
